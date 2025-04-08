@@ -1,7 +1,8 @@
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import HeroSection from '../components/HeroSection';
 import RegistrationForm from '../components/RegistrationForm';
+import { Instagram, Linkedin } from 'lucide-react';
 
 const Index = () => {
   // Initialize smooth scrolling behavior
@@ -85,8 +86,30 @@ const Index = () => {
               <RegistrationForm />
 
               <footer className="mt-16 text-center text-sm text-muted-foreground">
-                <p>&copy; {new Date().getFullYear()} Computer Science Club. All rights reserved.</p>
-                <p className="mt-1">Contact us at <a href="mailto:csclub@university.edu" className="text-sl-purple hover:text-sl-blue transition-colors underline-offset-4 hover:underline">csclub@university.edu</a></p>
+                <p>&copy; {new Date().getFullYear()} Infinity Club. All rights reserved.</p>
+                <p className="mt-1">Contact us at <a href="mailto:infinityclub@univ-bba.dz" className="text-sl-purple hover:text-sl-blue transition-colors underline-offset-4 hover:underline">infinityclub@univ-bba.dz</a></p>
+
+                {/* Social Media Links */}
+                <div className="flex justify-center items-center gap-6 mt-6">
+                  <a
+                    href="https://www.instagram.com/club_.infinity/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-9 h-9 rounded-full bg-sl-darkest border border-sl-purple/20 hover:border-sl-purple/60 hover:bg-sl-purple/10 transition-all duration-300 group"
+                    aria-label="Instagram"
+                  >
+                    <Instagram size={18} className="text-muted-foreground group-hover:text-sl-purple transition-colors duration-300" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/company/infinity-club11/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-9 h-9 rounded-full bg-sl-darkest border border-sl-blue/20 hover:border-sl-blue/60 hover:bg-sl-blue/10 transition-all duration-300 group"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin size={18} className="text-muted-foreground group-hover:text-sl-blue transition-colors duration-300" />
+                  </a>
+                </div>
               </footer>
             </div>
           </div>
