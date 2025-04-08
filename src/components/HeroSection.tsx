@@ -234,11 +234,11 @@ const HeroSection: React.FC = () => {
           {/* Subtle stats or features */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16 max-w-3xl mx-auto">
             <div className="bg-sl-darkest/50 backdrop-blur-sm border border-sl-purple/10 rounded-lg p-4 transition-all hover:border-sl-purple/30">
-              <div className="text-xl font-bold text-white mb-1">10+ Projects</div>
+              <div className="text-xl font-bold text-white mb-1">5+ Projects</div>
               <div className="text-sm text-slate-400">Build real-world applications</div>
             </div>
             <div className="bg-sl-darkest/50 backdrop-blur-sm border border-sl-purple/10 rounded-lg p-4 transition-all hover:border-sl-purple/30">
-              <div className="text-xl font-bold text-white mb-1">Expert Mentors</div>
+              <div className="text-xl font-bold text-white mb-1">Professional Mentors</div>
               <div className="text-sm text-slate-400">Learn from industry professionals</div>
             </div>
             <div className="bg-sl-darkest/50 backdrop-blur-sm border border-sl-purple/10 rounded-lg p-4 transition-all hover:border-sl-purple/30">
