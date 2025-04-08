@@ -1,14 +1,125 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Button } from './ui/button';
 import { ChevronRight, Zap, Sparkles } from 'lucide-react';
 import { Badge } from './ui/badge';
 const HeroSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 300);
     return () => clearTimeout(timer);
   }, []);
-  return <div className="relative w-full min-h-screen overflow-hidden flex items-center justify-center">
+  const handleCtaClick = (e: React.MouseEvent) => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+
+    // Create multiple particle burst effects for a more impressive animation
+    const createBurst = (x: number, y: number, size: number, delay: number) => {
+      setTimeout(() => {
+        const burst = document.createElement('div');
+        burst.className = 'particle-burst';
+        burst.style.left = `${x}px`;
+        burst.style.top = `${y}px`;
+        burst.style.width = `${size}px`;
+        burst.style.height = `${size}px`;
+        document.body.appendChild(burst);
+
+        // Remove the burst element after animation completes
+        setTimeout(() => {
+          if (burst && burst.parentNode) {
+            burst.parentNode.removeChild(burst);
+          }
+        }, 800);
+      }, delay);
+    };
+
+    // Create main burst at click position
+    createBurst(e.clientX, e.clientY, 100, 0);
+
+    // Create additional bursts with different sizes and delays for a more dynamic effect
+    createBurst(e.clientX - 20, e.clientY + 20, 80, 100);
+    createBurst(e.clientX + 30, e.clientY - 15, 60, 200);
+    createBurst(e.clientX + 10, e.clientY + 30, 70, 150);
+    createBurst(e.clientX - 25, e.clientY - 25, 50, 250);
+
+    // Create a flash overlay for a more dramatic effect
+    const flash = document.createElement('div');
+    flash.style.position = 'fixed';
+    flash.style.top = '0';
+    flash.style.left = '0';
+    flash.style.right = '0';
+    flash.style.bottom = '0';
+    flash.style.backgroundColor = 'white';
+    flash.style.zIndex = '9999';
+    flash.style.pointerEvents = 'none';
+    flash.style.animation = 'flash-overlay 0.6s ease-out forwards';
+
+    // Add a gradient background to the flash for a more magical effect
+    const isMobile = window.innerWidth <= 768;
+    if (!isMobile) {
+      flash.style.background = 'radial-gradient(circle at ' + e.clientX + 'px ' + e.clientY + 'px, rgba(155, 135, 245, 0.8), rgba(255, 255, 255, 0.8) 30%, rgba(255, 255, 255, 0.6) 70%)';
+    } else {
+      flash.style.background = 'radial-gradient(circle at center, rgba(155, 135, 245, 0.8), rgba(255, 255, 255, 0.8) 30%, rgba(255, 255, 255, 0.6) 70%)';
+    }
+    document.body.appendChild(flash);
+
+    // Remove the flash element after animation completes
+    setTimeout(() => {
+      if (flash && flash.parentNode) {
+        flash.parentNode.removeChild(flash);
+      }
+    }, 600);
+
+    // Add pulse animation to the button
+    if (buttonRef.current) {
+      buttonRef.current.classList.add('animate-cta-pulse');
+    }
+
+    // After button pulse, animate the hero section
+    setTimeout(() => {
+      if (heroRef.current) {
+        heroRef.current.classList.add('animate-page-transition');
+      }
+
+      // Scroll to registration form with enhanced animation
+      setTimeout(() => {
+        const registrationForm = document.getElementById('registration-form');
+        if (registrationForm) {
+          // Add reveal animation to the form
+          registrationForm.classList.add('animate-form-reveal');
+          registrationForm.style.opacity = '0';
+
+          // Scroll to the form
+          registrationForm.scrollIntoView({
+            behavior: 'smooth'
+          });
+
+          // Show the form with animation
+          setTimeout(() => {
+            registrationForm.style.opacity = '1';
+            setIsAnimating(false);
+
+            // Reset animations after completion
+            setTimeout(() => {
+              if (heroRef.current) {
+                heroRef.current.classList.remove('animate-page-transition');
+              }
+              if (buttonRef.current) {
+                buttonRef.current.classList.remove('animate-cta-pulse');
+              }
+              registrationForm.classList.remove('animate-form-reveal');
+            }, 1000);
+          }, 400);
+        }
+      }, 600);
+    }, 400);
+  };
+
+  return <div ref={heroRef} className="relative w-full min-h-screen overflow-hidden flex items-center justify-center">
       {/* Enhanced animated background layer */}
       <div className="absolute inset-0 bg-sl-darkest z-0">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM5Yjg3ZjUiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0di00aC0ydjRoLTR2Mmg0djRoMnYtNGg0di0yaC00em0wLTMwVjBoLTJ2NGgtNHYyaDR2NGgyVjZoNFY0aC00ek02IDM0di00SDR2NGgwdjJoNHY0aDJ2LTRoNHYtMkg2ek02IDRWMEg0djRIMHYyaDR2NGgyVjZoNFY0SDZ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-10"></div>
@@ -84,12 +195,12 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className={`relative z-10 container mx-auto px-4 py-20 text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <div ref={contentRef} className={`relative z-10 container mx-auto px-4 py-20 text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="space-y-8">
           {/* Badge */}
           <div className="flex justify-center mb-6">
             <Badge variant="outline" className="border-sl-purple/40 bg-sl-darkest/60 backdrop-blur-sm px-3 py-1 text-xs uppercase tracking-wide font-medium text-sl-purple/90 flex items-center gap-1.5">
-              <Sparkles className="h-3.5 w-3.5" /> CS Club Flutter Bootcamp <Sparkles className="h-3.5 w-3.5" />
+              <Sparkles className="h-3.5 w-3.5" /> Infinity Club Flutter Bootcamp <Sparkles className="h-3.5 w-3.5" />
             </Badge>
           </div>
 
@@ -105,14 +216,11 @@ const HeroSection: React.FC = () => {
 
           {/* Single, enhanced call-to-action button */}
           <div className="flex justify-center items-center mt-12">
-            <Button className="sl-button group text-base py-7 px-10 rounded-md transition-all duration-300 shadow-xl shadow-sl-purple/20 relative overflow-hidden" onClick={() => {
-            const registrationForm = document.getElementById('registration-form');
-            if (registrationForm) {
-              registrationForm.scrollIntoView({
-                behavior: 'smooth'
-              });
-            }
-          }}>
+            <Button
+              ref={buttonRef}
+              className="sl-button group text-base py-7 px-10 rounded-md transition-all duration-300 shadow-xl shadow-sl-purple/20 relative overflow-hidden"
+              onClick={handleCtaClick}
+            >
               <span className="relative z-10 flex items-center gap-2">
                 <Zap className="w-5 h-5 text-white group-hover:text-yellow-100 transition-colors" />
                 <span className="text-lg font-bold">Begin Your Ascension</span>

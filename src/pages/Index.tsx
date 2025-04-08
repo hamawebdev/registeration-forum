@@ -75,7 +75,7 @@ const Index = () => {
           <div className="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMSI+PHBhdGggZD0iTTM2IDM0di00aC0ydjRoLTR2Mmg0djRoMnYtNGg0di0yaC00em0wLTMwVjBoLTJ2NGgtNHYyaDR2NGgyVjZoNFY0aC00ek02IDM0di00SDR2NGgwdjJoNHY0aDJ2LTRoNHYtMkg2ek02IDRWMEg0djRIMHYyaDR2NGgyVjZoNFY0SDZ6Ii8+PC9nPjwvZz48L3N2Zz4=')] bg-repeat"></div>
 
           <div className="relative z-10">
-            <div id="registration-form" className="max-w-4xl mx-auto px-4">
+            <div id="registration-form" className="max-w-4xl mx-auto px-4 transition-opacity duration-500">
               {/* Section header to clearly identify the form area */}
               <div className="text-center mb-10">
                 <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-sl-blue to-sl-purple bg-clip-text text-transparent">Join The Bootcamp</h2>
