@@ -54,7 +54,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-agency text-neon-blue;
-    text-shadow: 0 0 20px theme('colors.neon-blue');
+    text-shadow: 0 0 5px theme('colors.neon-blue');
   }
 
   code, pre {
@@ -184,8 +184,13 @@
 }
 
 .flutter-heading {
-  @apply font-agency text-neon-blue text-xl border-b border-blood-red relative;
-  text-shadow: 0 0 15px theme('colors.neon-blue');
+  @apply font-agency text-neon-blue text-xl border-b-2 border-blood-red relative pb-2;
+  text-shadow: 0 0 5px theme('colors.neon-blue');
+}
+
+.flutter-heading::after {
+  content: '';
+  @apply absolute bottom-[-8px] left-0 w-full h-[2px] bg-gradient-to-r from-blood-red to-transparent;
 }
 
 .flutter-card {
@@ -206,15 +211,15 @@
 }
 
 .flutter-neon-text {
-  text-shadow: 0 0 8px theme('colors.neon-blue'), 0 0 15px theme('colors.neon-blue');
+  text-shadow: 0 0 5px theme('colors.neon-blue');
 }
 
 .flutter-purple-glow {
-  text-shadow: 0 0 8px theme('colors.shadow-purple'), 0 0 15px theme('colors.shadow-purple');
+  text-shadow: 0 0 5px theme('colors.shadow-purple');
 }
 
 .flutter-red-glow {
-  text-shadow: 0 0 8px theme('colors.blood-red'), 0 0 15px theme('colors.blood-red');
+  text-shadow: 0 0 5px theme('colors.blood-red');
 }
 
 /* New animations for the hero section */

@@ -222,11 +222,11 @@ const HeroSection: React.FC = () => {
           </div>
 
           {/* Main title with enhanced styling */}
-          {/* Main title with enhanced styling */}
-<h1 className="text-3xl md:text-5xl font-agency font-extrabold tracking-tighter mb-3">
-  <span className="text-neon-blue flutter-neon-text inline-block">FROM ZERO</span>
+<h1 className="text-3xl md:text-5xl font-agency font-extrabold tracking-tighter mb-3 border-b-2 border-blood-red pb-2 relative">
+  <span className="text-neon-blue inline-block">FROM ZERO</span>
   <br />
-  <span className="text-neon-blue flutter-neon-text inline-block mt-1">TO APP HERO</span>
+  <span className="text-neon-blue inline-block mt-1">TO APP HERO</span>
+  {/* <span className="absolute bottom-[-8px] left-0 w-full h-[2px] bg-gradient-to-r from-blood-red to-transparent"></span> */}
 </h1>
 
 <p className="text-center text-lg md:text-xl">
@@ -234,10 +234,10 @@ const HeroSection: React.FC = () => {
 </p>
 
 
-      
 
 
-       
+
+
 
           <div className="flex justify-center items-center mt-6">
             <Button
