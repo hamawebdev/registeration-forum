@@ -1,3 +1,5 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700&family=Amiri&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -5,25 +7,34 @@
 
 @layer base {
   :root {
-    --background: 230 25% 12%;
-    --foreground: 240 10% 95%;
-    --card: 230 30% 15%;
-    --card-foreground: 240 10% 95%;
-    --popover: 230 30% 15%;
-    --popover-foreground: 240 10% 95%;
-    --primary: 255 67% 75%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 230 15% 20%;
-    --secondary-foreground: 240 10% 95%;
-    --muted: 230 20% 20%;
+    /* Flutter theme colors converted to HSL */
+    --void-black: 240 100% 4%;
+    --neon-blue: 183 100% 50%;
+    --shadow-purple: 263 100% 50%;
+    --blood-red: 345 100% 50%;
+    --dungeon-gray: 240 16% 20%;
+    --light-text: 240 100% 94%;
+
+    /* Map Flutter colors to Tailwind CSS variables */
+    --background: var(--void-black);
+    --foreground: var(--light-text);
+    --card: var(--dungeon-gray);
+    --card-foreground: var(--light-text);
+    --popover: var(--dungeon-gray);
+    --popover-foreground: var(--light-text);
+    --primary: var(--neon-blue);
+    --primary-foreground: var(--void-black);
+    --secondary: var(--shadow-purple);
+    --secondary-foreground: var(--light-text);
+    --muted: 240 10% 15%;
     --muted-foreground: 240 5% 65%;
-    --accent: 255 67% 85%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 230 20% 25%;
-    --input: 230 20% 25%;
-    --ring: 255 67% 75%;
+    --accent: var(--blood-red);
+    --accent-foreground: var(--light-text);
+    --destructive: var(--blood-red);
+    --destructive-foreground: var(--light-text);
+    --border: var(--neon-blue);
+    --input: 240 10% 15%;
+    --ring: var(--neon-blue);
     --radius: 0.5rem;
   }
 }
@@ -34,11 +45,20 @@
   }
 
   body {
-    @apply bg-sl-darkest text-foreground;
-    background-image: linear-gradient(to bottom, rgba(26, 31, 44, 0.9), rgba(11, 14, 20, 0.95)),
-                     url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239b87f5' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    @apply bg-void-black text-foreground font-oxanium;
+    background-image: linear-gradient(45deg, theme('colors.void-black') 40%, #1a1a2f),
+                     url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300f3ff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     background-size: cover;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-agency text-neon-blue;
+    text-shadow: 0 0 20px theme('colors.neon-blue');
+  }
+
+  code, pre {
+    @apply font-mono;
   }
 }
 
@@ -156,6 +176,47 @@
   @apply bg-gradient-to-r from-sl-purple/80 to-sl-blue/80 hover:from-sl-purple hover:to-sl-blue text-white transition-all duration-300 shadow-md hover:shadow-sl-glow;
 }
 
+/* Flutter Theme Custom Classes */
+.flutter-body {
+  @apply font-oxanium bg-void-black text-light-text;
+  background-image: linear-gradient(45deg, theme('colors.void-black') 40%, #1a1a2f);
+  background-size: cover;
+}
+
+.flutter-heading {
+  @apply font-agency text-neon-blue text-xl border-b border-blood-red relative;
+  text-shadow: 0 0 15px theme('colors.neon-blue');
+}
+
+.flutter-card {
+  @apply bg-dungeon-gray/90 backdrop-blur-sm border border-neon-blue shadow-lg p-6 rounded-lg;
+  box-shadow: 0 0 50px theme('colors.shadow-purple');
+}
+
+.flutter-button {
+  @apply bg-neon-blue text-void-black font-bold py-2 px-4 rounded transition-all duration-300;
+  &:hover {
+    box-shadow: 0 0 15px theme('colors.neon-blue');
+    transform: translateY(-2px);
+  }
+}
+
+.flutter-code {
+  @apply font-mono bg-black/50 p-4 border border-neon-blue rounded-md text-light-text;
+}
+
+.flutter-neon-text {
+  text-shadow: 0 0 8px theme('colors.neon-blue'), 0 0 15px theme('colors.neon-blue');
+}
+
+.flutter-purple-glow {
+  text-shadow: 0 0 8px theme('colors.shadow-purple'), 0 0 15px theme('colors.shadow-purple');
+}
+
+.flutter-red-glow {
+  text-shadow: 0 0 8px theme('colors.blood-red'), 0 0 15px theme('colors.blood-red');
+}
+
 /* New animations for the hero section */
 @keyframes float {
   0%, 100% {
@@ -194,10 +255,40 @@
 
 .particle {
   position: absolute;
-  background-color: theme('colors.sl-purple');
+  background-color: theme('colors.neon-blue');
   border-radius: 50%;
   opacity: 0;
   animation: particle-float 6s ease-in-out infinite;
+}
+
+/* Shooting star animation */
+@keyframes shoot {
+  0% { transform: translateY(-100vh) translateX(0); opacity: 0.7; }
+  100% { transform: translateY(100vh) translateX(150px); opacity: 0; }
+}
+
+.shooting-star {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: theme('colors.neon-blue');
+  border-radius: 50%;
+  animation: shoot 2s infinite;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.page {
+  background: rgba(10, 10, 18, 0.85);
+  border: 2px solid theme('colors.neon-blue');
+  box-shadow: 0 0 30px theme('colors.shadow-purple');
+  margin: 2rem auto;
+  padding: 2rem;
+  max-width: 800px;
+  border-radius: 16px;
+  transform-style: preserve-3d;
+  position: relative;
+  backdrop-filter: blur(5px);
 }
 
 /* Shadow glow effect for buttons */

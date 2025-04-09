@@ -19,6 +19,12 @@ export default {
       }
     },
     extend: {
+      fontFamily: {
+        oxanium: ['Oxanium', 'cursive'],
+        agency: ['Agency FB', 'sans-serif'],
+        amiri: ['Amiri', 'serif'],
+        mono: ['monospace']
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -63,6 +69,13 @@ export default {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))'
         },
+        // Flutter theme colors
+        'void-black': '#000013',
+        'neon-blue': '#00f3ff',
+        'shadow-purple': '#6a00ff',
+        'blood-red': '#ff003c',
+        'dungeon-gray': '#2a2a3c',
+        'light-text': '#e0e0ff',
         // Solo Leveling theme colors
         'sl-dark': '#1A1F2C',
         'sl-darker': '#141824',
@@ -87,10 +100,10 @@ export default {
           to: { height: '0' }
         },
         'glow-pulse': {
-          '0%, 100%': { 
+          '0%, 100%': {
             boxShadow: '0 0 5px rgba(158, 138, 245, 0.5), 0 0 10px rgba(158, 138, 245, 0.3)'
           },
-          '50%': { 
+          '50%': {
             boxShadow: '0 0 10px rgba(158, 138, 245, 0.8), 0 0 20px rgba(158, 138, 245, 0.5)'
           }
         }
