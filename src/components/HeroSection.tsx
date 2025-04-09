@@ -247,7 +247,7 @@ const HeroSection: React.FC = () => {
             >
               <span className="relative z-10 flex items-center gap-2">
                 <Zap className="w-4 h-4 text-void-black group-hover:text-void-black transition-colors" />
-                <span className="font-bold">Commencer Maintenant</span>
+                <span className="font-bold">Apply Now</span>
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
             </Button>
