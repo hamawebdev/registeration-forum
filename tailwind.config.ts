@@ -23,7 +23,8 @@ export default {
         oxanium: ['Oxanium', 'cursive'],
         agency: ['Agency FB', 'sans-serif'],
         amiri: ['Amiri', 'serif'],
-        mono: ['monospace']
+        mono: ['monospace'],
+        digital: ['Press Start 2P', 'cursive']
       },
       colors: {
         border: 'hsl(var(--border))',

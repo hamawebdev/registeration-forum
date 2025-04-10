@@ -222,10 +222,10 @@ const HeroSection: React.FC = () => {
           </div>
 
           {/* Main title with enhanced styling */}
-<h1 className="text-3xl md:text-5xl font-agency font-extrabold tracking-tighter mb-3 border-b-2 border-blood-red pb-2 relative">
-  <span className="text-neon-blue inline-block">FROM ZERO</span>
+<h1 className="text-2xl md:text-4xl font-digital tracking-tight mb-3 border-b-2 border-blood-red pb-2 relative">
+  <span className="text-neon-blue inline-block flutter-neon-text" style={{ textShadow: '0 0 3px rgba(255, 255, 255, 0.8), 0 0 7px rgba(0, 243, 255, 0.6)' }}>UNLOCK</span>
   <br />
-  <span className="text-neon-blue inline-block mt-1">TO APP HERO</span>
+  <span className="text-neon-blue inline-block mt-1 flutter-neon-text" style={{ textShadow: '0 0 3px rgba(255, 255, 255, 0.8), 0 0 7px rgba(0, 243, 255, 0.6)' }}>FLUTTER BOOTCAMP</span>
   {/* <span className="absolute bottom-[-8px] left-0 w-full h-[2px] bg-gradient-to-r from-blood-red to-transparent"></span> */}
 </h1>
 
@@ -247,7 +247,7 @@ const HeroSection: React.FC = () => {
             >
               <span className="relative z-10 flex items-center gap-2">
                 <Zap className="w-4 h-4 text-void-black group-hover:text-void-black transition-colors" />
-                <span className="font-bold">Apply Now</span>
+                <span className="font-bold">JOIN THE GAME</span>
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
             </Button>

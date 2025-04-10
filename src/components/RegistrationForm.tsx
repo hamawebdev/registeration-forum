@@ -78,10 +78,10 @@ const RegistrationForm: React.FC = () => {
                 className="text-neon-blue h-8 w-8"
               />
             </div>
-            <CardTitle className="text-2xl font-agency font-bold flutter-neon-text tracking-wider uppercase">Registration Form</CardTitle>
+            <CardTitle className="text-2xl font-agency font-bold flutter-neon-text tracking-wider uppercase">Player Registration</CardTitle>
           </div>
-          <CardDescription className="text-light-text text-center">
-            Please fill out the following information to join the Flutter Bootcamp
+          <CardDescription className="text-blood-red text-center">
+            Please fill out the following information to join the game  
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
